@@ -155,7 +155,7 @@ Comprobacion com = new Comprobacion();
            JOptionPane.showMessageDialog(rootPane, mensaje);
         }else{
         beanArea=new BeanArea(0,nombre,true);
-        boolean correcto=daoArea.addArea(beanArea);
+        boolean correcto=daoArea.add(beanArea);
         if(correcto){
             JOptionPane.showMessageDialog(rootPane, "Área agregada correctamente :)");
             this.dispose();
