@@ -42,7 +42,7 @@
                             <th>Fecha De Salida</th>
                             <th>Fecha De Entrega</th>
                              <th>Editar</th>
-                             <th>Eliminar</th>
+                             <th>Entregar</th>
                         </tr>                                
                     </thead>
                     <tbody>
