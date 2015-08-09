@@ -6,6 +6,7 @@
 
 <%@page import="app.model.BeanUsuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,16 +41,15 @@
 
                     <label class="col-md-4 control-label" for="cmbUsuario">Usuario</label>  
                     <div class="col-md-4">
-                        <select class="form-control" name="cmbUsuario" requiered="">
-                            <c:forEach items="${attUsuario}" var="elem">
-
-                                <option> <c:out value="${elem.nombre} ${elem.primer_apellido}" /> </option>
-
+                        <select id="cmbUsuario" class="form-control" name="cmbUsuario">
+                            <c:forEach items="${usuario}" var="elem">
+                           <option value="${elem.nombre} ${elem.primer_apellido}"><c:out value="${elem.nombre} ${elem.primer_apellido}" /></option>
                             </c:forEach>
                         </select>
 
                         <span class="help-block">Seleccionar el Usuario </span>  
                     </div>
+                      
                 </div>
                                 
                                 
@@ -58,7 +58,7 @@
                     <label class="col-md-4 control-label" for="cmbEjemplar">Libro</label>  
                     <div class="col-md-4">
                         <select class="form-control" name="cmbEjemplar" requiered="">
-                            <c:forEach items="${attEjemplar}" var="elem">
+                            <c:forEach items="${ejemplar}" var="elem">
 
                                 <option value="${elem.id_ejemplar}"> <c:out value="${elem.id_ejemplar}" /> </option>
 
