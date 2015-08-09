@@ -57,7 +57,7 @@ public class ReadLibro extends javax.swing.JFrame {
         for (BeanLibro bean : lista) {
             String autores = "";
             for (BeanAutor aut : bean.getAutores()) {
-                autores += aut.getNombre() + " " + aut.getPrimer_apellido()+"\n";
+                autores += aut.getNombre() + " " + aut.getPrimer_apellido()+", ";
             }
             
             modelo = new DefaultTableModel(new String[]{"id_libro", "titulo", "ISBN", "Paginas", "Area", "Editorial", "Autores"}, 0);
@@ -76,12 +76,16 @@ public class ReadLibro extends javax.swing.JFrame {
             actualizarTabla();
         } else {
 
-            modelo = new DefaultTableModel(new String[]{"id_libro", "titulo", "ISBN","Paginas", "Area", "Editorial, autores"}, 0);
+            modelo = new DefaultTableModel(new String[]{"id_libro", "titulo", "ISBN","Paginas", "Area", "Editorial", "Autores"}, 0);
             List<BeanLibro> lista = daoLibro.getAll();
             for (BeanLibro bean : lista) {
+                 String autores = "";
+                 for (BeanAutor aut : bean.getAutores()) {
+                autores += aut.getNombre() + " " + aut.getPrimer_apellido()+", ";
+            }
                 if (bean.getTitulo().toLowerCase().contains(bus.toLowerCase())) {
                     Object[] arreglo = {bean.getId_libro(), bean.getTitulo(), bean.getISBN(), bean.getPaginas(), bean.getArea(),
-                        bean.getEditorial()};
+                        bean.getEditorial(),autores};
                     modelo.addRow(arreglo);
                 }
 
