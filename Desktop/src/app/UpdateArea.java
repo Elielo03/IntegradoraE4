@@ -63,8 +63,6 @@ Comprobacion com = new Comprobacion();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtAlta = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnborrar = new javax.swing.JButton();
@@ -87,19 +85,6 @@ Comprobacion com = new Comprobacion();
             }
         });
 
-        jLabel3.setText("Alta");
-
-        txtAlta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAltaActionPerformed(evt);
-            }
-        });
-        txtAlta.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAltaKeyTyped(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -109,29 +94,21 @@ Comprobacion com = new Comprobacion();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                        .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                            .addComponent(txtAlta))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(34, 34, 34))
         );
 
         btnGuardar.setText("Guardar");
@@ -175,7 +152,7 @@ Comprobacion com = new Comprobacion();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar)
@@ -196,12 +173,6 @@ Comprobacion com = new Comprobacion();
         DaoArea daoArea = new DaoArea(conexion);
         String nombre= txtNombre.getText();
         consultaArea.setNombre(nombre);
-        String alta=txtAlta.getText();
-        if(alta.equals("true")){
-          consultaArea.setAlta(true);  
-        }else if(alta.equals("false")){
-            consultaArea.setAlta(false);
-            }
         
         
         if(nombre.length()==0){
@@ -211,7 +182,7 @@ Comprobacion com = new Comprobacion();
            }
            JOptionPane.showMessageDialog(rootPane, mensaje);
         }else{
-        boolean confirm= daoArea.update(consultaArea);
+        boolean confirm= daoArea.updatear(consultaArea);
         if(confirm){
             JOptionPane.showMessageDialog(rootPane, "Area modificada con éxito");
             new ReadArea().setVisible(true);
@@ -244,10 +215,6 @@ Comprobacion com = new Comprobacion();
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void txtAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAltaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAltaActionPerformed
-
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
         com.validarLetras(evt);
         int limite = 50;
@@ -255,14 +222,6 @@ Comprobacion com = new Comprobacion();
              evt.consume();  
            }
     }//GEN-LAST:event_txtNombreKeyTyped
-
-    private void txtAltaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAltaKeyTyped
-        com.validarLetras(evt);
-        int limite = 5;
-           if (txtAlta.getText().length()>=limite){
-             evt.consume();  
-           }
-    }//GEN-LAST:event_txtAltaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -306,9 +265,7 @@ Comprobacion com = new Comprobacion();
     private javax.swing.JButton btnborrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtAlta;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

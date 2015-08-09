@@ -5,7 +5,23 @@
 --%>
 
 <%@page import="app.model.BeanUsuario"%>
+<%@page import="app.model.BeanEjemplar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.logging.Logger"%>
+<%@page import="java.util.logging.Level"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="Util.ConexionSQLServer"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="app.model.BeanEditorial"%>
+<%@page import="app.model.BeanAutor"%>
+<%@page import="app.model.BeanArea"%>
+<%@page import="java.util.List"%>
+<%@page import="app.Daos.DaoEditorial"%>
+<%@page import="app.Daos.DaoAutor"%>
+<%@page import="app.Daos.DaoArea"%>
+<%@page import="app.Daos.DaoUsuario"%>
+<%@page import="app.Daos.DaoEjemplar"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -43,7 +59,7 @@
                     <div class="col-md-4">
                         <select id="cmbUsuario" class="form-control" name="cmbUsuario">
                             <c:forEach items="${usuario}" var="elem">
-                           <option value="${elem.nombre} ${elem.primer_apellido}"><c:out value="${elem.nombre} ${elem.primer_apellido}" /></option>
+                           <option value="${elem.nombre} ${elem.primer_apellido} ${elem.segundo_apellido}"><c:out value="${elem.nombre} ${elem.primer_apellido} ${elem.segundo_apellido}" /></option>
                             </c:forEach>
                         </select>
 
@@ -60,7 +76,7 @@
                         <select class="form-control" name="cmbEjemplar" requiered="">
                             <c:forEach items="${ejemplar}" var="elem">
 
-                                <option value="${elem.id_ejemplar}"> <c:out value="${elem.id_ejemplar}" /> </option>
+                                <option value="${elem.libro.titulo}"><c:out value="${elem.libro.titulo}" /></option>
 
                             </c:forEach>
                         </select>
