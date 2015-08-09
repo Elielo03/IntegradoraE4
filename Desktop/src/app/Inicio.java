@@ -75,6 +75,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         new Login().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_loginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

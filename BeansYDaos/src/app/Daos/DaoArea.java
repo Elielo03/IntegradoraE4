@@ -130,6 +130,30 @@ public class DaoArea extends AbstractDao<BeanArea>{
         }
 
         return false;
+    }
+        
+        public boolean updatear(BeanArea bean) {
+       
+        String query = "UPDATE " + "Area" + " SET"
+                + " nombre = ?"
+                + " WHERE " + "id_area" + " = ?;";
+       bean.toString();
+
+        try (PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, bean.getNombre());
+            ps.setInt(2, bean.getId_area());
+            if (ps.executeUpdate() == 1) {
+                
+                ps.close();
+                return true;
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoArea.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
+        }
 
 //=======
 //        
@@ -153,7 +177,7 @@ public class DaoArea extends AbstractDao<BeanArea>{
 //        }
 //         return false;
 //>>>>>>> origin/master
-    }
+    
     
 
     @Override
